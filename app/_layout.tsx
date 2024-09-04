@@ -14,6 +14,17 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    DMSans18: require('../assets/fonts/static/DMSans_18pt-Black.ttf'),
+    DMSansSemiBold: require('../assets/fonts/static/DMSans_18pt-SemiBold.ttf'),
+    SpaceGroteskSemiBold: require('../assets/fonts/Space_Grotesk/SpaceGrotesk-SemiBold.ttf'),
+    SpaceGroteskMedium: require('../assets/fonts/Space_Grotesk/SpaceGrotesk-Medium.ttf'),
+    SpaceGroteskLight: require('../assets/fonts/Space_Grotesk/SpaceGrotesk-Light.ttf'),
+    SpaceGroteskRegular: require('../assets/fonts/Space_Grotesk/SpaceGrotesk-Regular.ttf'),
+    SpaceGroteskBold: require('@/assets/fonts/Space_Grotesk/SpaceGrotesk-Bold.ttf'),
+
+
+
+
   });
 
   useEffect(() => {
@@ -31,6 +42,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
+        <Stack.Screen name='game-screen' options={{ headerShown: false }}/>
       </Stack>
     </ThemeProvider>
   );
