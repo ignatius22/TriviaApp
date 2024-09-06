@@ -2,6 +2,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import Svg, { Path } from "react-native-svg";
@@ -10,28 +11,62 @@ import Animated, {
   withTiming,
   useDerivedValue,
 } from "react-native-reanimated";
+import { Platform, View, ViewStyle } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  
+  const screenOptions = {
+    tabBarShowLabel: true,
+    headerShown: false,
+    tabBarLabelStyle: {
+      color: "#ffffff",
+      fontFamily: "DMSans_18ptBold",
+      fontSize: 14,
+      lineHeight: 20,
+    },
+    tabBarStyle: {
+      position: "absolute",
+      bottom: 0,
+      right: 0,
+      left: 0,
+      elevation: 0,
+      backgroundColor: "#17478B",
+      height: Platform.OS === "android" ? 60 : 85,
+      paddingBottom:10
+    
+    } as ViewStyle,
+  };
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        headerShown: false,
-      }}
-    >
+    <Tabs screenOptions={screenOptions}>
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
-          ),
+          
+          tabBarIcon: ({ color, focused }) => {
+            return (
+              <View
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#2A75BC",
+                  width: Platform.OS == "ios" ? 50 : 50,
+                  height: Platform.OS == "ios" ? 50 : 50,
+                  bottom: Platform.OS == "ios" ? 15 : 15,
+                  borderRadius: Platform.OS == "ios" ? 30 : 40,
+                  borderColor: "white",
+                  borderWidth: 3,
+                }}
+              >
+                <TabBarIcon
+                  name={focused ? "home" : "home-outline"}
+                  color="white"
+                  size={24}
+                />
+              </View>
+            );
+          },
         }}
       />
       <Tabs.Screen
@@ -40,8 +75,9 @@ export default function TabLayout() {
           title: "Wallet",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
-              color={color}
+              name={focused ? "wallet" : "wallet-outline"}
+              color="#ffffff"
+              size={24}
             />
           ),
         }}
@@ -52,8 +88,9 @@ export default function TabLayout() {
           title: "Store",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
-              color={color}
+              name={focused ? "storefront" : "storefront-outline"}
+              color="#ffffff"
+              size={24}
             />
           ),
         }}
@@ -64,8 +101,9 @@ export default function TabLayout() {
           title: "LeaderBoard",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
-              color={color}
+              name={focused ? "build" : "build-outline"}
+              color="#ffffff"
+              size={24}
             />
           ),
         }}
@@ -76,12 +114,88 @@ export default function TabLayout() {
           title: "Settings",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
-              color={color}
+              name={focused ? "cog" : "cog-outline"}
+              color="#ffffff"
+              size={24}
             />
           ),
         }}
       />
     </Tabs>
   );
+}
+
+{
+  /* <Tab.Screen
+name="Homestack"
+component={StackNavigator}
+options={({route}) => ({
+  tabBarIcon: ({focused}) => (
+    <View
+      style={{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: Platform.OS === 'android' ? 0 : rem(12),
+      }}>
+      <FontAwesomeIcon
+        icon={faHome}
+        size={scaleFontSize(25)}
+        color={focused ? primary : light}
+      />
+    </View>
+  ),
+})}
+/>
+
+
+<Tab.Screen
+name={routes.Search}
+component={Search}
+options={{
+  tabBarIcon: ({focused}) => {
+    return (
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: primary,
+          width: Platform.OS == 'ios' ? rem(60) : rem(60),
+          height: Platform.OS == 'ios' ? rem(60) : rem(60),
+          top: Platform.OS == 'ios' ? rem(-10) : rem(-13),
+          borderRadius: Platform.OS == 'ios' ? rem(30) : rem(40),
+          borderColor: 'white',
+          borderWidth: rem(3),
+        }}>
+        <FontAwesomeIcon
+          icon={faSearch}
+          size={scaleFontSize(16)}
+          color={light}
+        />
+      </View>
+    );
+  },
+}}
+/>
+<Tab.Screen
+name={routes.Cart}
+component={Cart}
+options={{
+  tabBarIcon: ({focused}) => {
+    return (
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: Platform.OS === 'android' ? 0 : rem(12),
+        }}>
+        <FontAwesomeIcon
+          icon={faCartShopping}
+          size={scaleFontSize(25)}
+          color={focused ? primary : light}
+        />
+      </View>
+    );
+  },
+}}
+/> */
 }

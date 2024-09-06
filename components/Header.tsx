@@ -17,7 +17,6 @@ const Header: React.FC = () => {
       imageStyle={styles.image}
       resizeMode="cover"
     >
-  
       <View style={styles.profileSection}>
         <View style={{ flexDirection: "column", gap: 15 }}>
           <View
@@ -34,9 +33,7 @@ const Header: React.FC = () => {
             <View style={styles.balanceContainer}>
               <View style={styles.eraser}>
                 <TouchableOpacity activeOpacity={0.3}>
-                  <Image
-                    source={require("@/assets/images/eraser.png")}
-                  />
+                  <Image source={require("@/assets/images/eraser.png")} />
                 </TouchableOpacity>
                 <Text style={styles.countText}>0</Text>
               </View>
@@ -84,11 +81,11 @@ const styles = StyleSheet.create({
   text: {
     color: "#fff",
     fontSize: 24,
-  
   },
   image: {
     borderBottomRightRadius: 70,
-    backgroundColor: "#17478BB2",
+    backgroundColor: "#17478B",
+    opacity: 0.78,
   },
   // image: {
   //   borderBottomLeftRadius: 30,

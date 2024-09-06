@@ -13,7 +13,10 @@ import { gamersData } from "@/gameData";
 import { renderGamerItem } from "@/components/RenderGamerItem";
 import { Link } from "expo-router";
 
+
+
 export default function HomeScreen() {
+  
   return (
     <ScrollView style={styles.container}>
       <Header />
@@ -31,14 +34,11 @@ export default function HomeScreen() {
         </View>
         <View style={styles.container}>
           <View style={styles.actionRow}>
-            <View>
+            <Link href={"/game-screen"} asChild>
               <TouchableOpacity style={styles.joinButton} activeOpacity={0.4}>
-                <Link href={"/game-screen"} style={styles.joinButtonText}>
-                  Join Game
-                </Link>
-                {/* <Text >Join Game</Text> */}
+                <Text style={styles.joinButtonText}>Join Game</Text>
               </TouchableOpacity>
-            </View>
+            </Link>
             <View style={styles.entryFeeContainer}>
               <View>
                 <Text style={styles.entryFeeText}>Entry Fee</Text>
