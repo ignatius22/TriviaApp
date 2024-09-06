@@ -2,15 +2,9 @@ import { Tabs } from "expo-router";
 import React from "react";
 
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import Svg, { Path } from "react-native-svg";
-import Animated, {
-  useAnimatedStyle,
-  withTiming,
-  useDerivedValue,
-} from "react-native-reanimated";
+
 import { Platform, View, ViewStyle } from "react-native";
 
 export default function TabLayout() {
@@ -31,9 +25,8 @@ export default function TabLayout() {
       left: 0,
       elevation: 0,
       backgroundColor: "#17478B",
-      height: Platform.OS === "android" ? 60 : 85,
-      paddingBottom:10
-    
+      height: Platform.OS === "android" ? 65 : 80,
+      paddingBottom: Platform.OS === "android" ? 10 : 15,
     } as ViewStyle,
   };
 
@@ -43,7 +36,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Home",
-          
+
           tabBarIcon: ({ color, focused }) => {
             return (
               <View
@@ -123,79 +116,4 @@ export default function TabLayout() {
       />
     </Tabs>
   );
-}
-
-{
-  /* <Tab.Screen
-name="Homestack"
-component={StackNavigator}
-options={({route}) => ({
-  tabBarIcon: ({focused}) => (
-    <View
-      style={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: Platform.OS === 'android' ? 0 : rem(12),
-      }}>
-      <FontAwesomeIcon
-        icon={faHome}
-        size={scaleFontSize(25)}
-        color={focused ? primary : light}
-      />
-    </View>
-  ),
-})}
-/>
-
-
-<Tab.Screen
-name={routes.Search}
-component={Search}
-options={{
-  tabBarIcon: ({focused}) => {
-    return (
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: primary,
-          width: Platform.OS == 'ios' ? rem(60) : rem(60),
-          height: Platform.OS == 'ios' ? rem(60) : rem(60),
-          top: Platform.OS == 'ios' ? rem(-10) : rem(-13),
-          borderRadius: Platform.OS == 'ios' ? rem(30) : rem(40),
-          borderColor: 'white',
-          borderWidth: rem(3),
-        }}>
-        <FontAwesomeIcon
-          icon={faSearch}
-          size={scaleFontSize(16)}
-          color={light}
-        />
-      </View>
-    );
-  },
-}}
-/>
-<Tab.Screen
-name={routes.Cart}
-component={Cart}
-options={{
-  tabBarIcon: ({focused}) => {
-    return (
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: Platform.OS === 'android' ? 0 : rem(12),
-        }}>
-        <FontAwesomeIcon
-          icon={faCartShopping}
-          size={scaleFontSize(25)}
-          color={focused ? primary : light}
-        />
-      </View>
-    );
-  },
-}}
-/> */
 }

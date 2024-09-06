@@ -42,7 +42,6 @@ const Header: React.FC = () => {
                 <TouchableOpacity activeOpacity={0.3}>
                   <Image
                     source={require("@/assets/images/plus.png")}
-                    // style={styles.avatar}
                   />
                 </TouchableOpacity>
               </View>
@@ -87,10 +86,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#17478B",
     opacity: 0.78,
   },
-  // image: {
-  //   borderBottomLeftRadius: 30,
-  //   borderBottomRightRadius: 30,
-  // },
   welcomeText: {
     color: "#ffffff",
     fontSize: 24,
