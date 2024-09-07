@@ -6,18 +6,25 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  SafeAreaView,
+  Platform,
 } from "react-native";
 
 import Header from "@/components/Header";
 import { gamersData } from "@/gameData";
 import { renderGamerItem } from "@/components/RenderGamerItem";
 import { Link } from "expo-router";
+import {rem, vh, vw} from '@/constants/helper'
+import {scaleFontSize} from "@/constants/scaling"
 
 
 
 export default function HomeScreen() {
+
+  
   
   return (
+    <SafeAreaView style={{flex:1}}>
     <ScrollView style={styles.container}>
       <Header />
       <View style={styles.card}>
@@ -27,12 +34,12 @@ export default function HomeScreen() {
             <Text style={styles.tipsText}>?</Text>
           </View>
         </View>
-        <View>
+        <View style={styles.grandContainer}>
           <Text style={styles.cardText1}>Game Prize</Text>
           <Text style={styles.cardTextGrandPrice}>₦1,000,000</Text>
-          <Text style={styles.predictText}>Next Game: Tomorrow, 8PM </Text>
+          <Text style={styles.predictText}>Next Game: Tomorrow, 8PM</Text>
         </View>
-        <View style={styles.container}>
+        <View style={styles.actionCont}>
           <View style={styles.actionRow}>
             <Link href={"/game-screen"} asChild>
               <TouchableOpacity style={styles.joinButton} activeOpacity={0.4}>
@@ -63,10 +70,10 @@ export default function HomeScreen() {
       </View>
       <View style={styles.referContainer}>
         <View style={styles.referImage}>
-          <Image source={require("@/assets/images/share.png")} />
+          <Image source={require("@/assets/images/share.png")} style={{width:"82%"}}/>
         </View>
         <View style={styles.referSection}>
-          <View style={{ padding: 18 }}>
+          <View style={{ padding: rem(18) }}>
             <Text style={styles.referTextHeader}>
               Refer & Earn with your Friends{" "}
             </Text>
@@ -80,109 +87,98 @@ export default function HomeScreen() {
         </View>
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  stepContainer2: {
-    marginBottom: 8,
-    backgroundColor: "#FFFFFF",
-    height: 246,
-    width: 352,
-    borderRadius: 20,
-    bottom: 98,
-    left: 18,
-    borderBottomWidth: 63,
-    borderColor: "#2364AA",
-  },
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
+   
   },
-
+  actionCont:{
+    justifyContent:"center"
+  },
   image: {
     width: "100%",
     height: "100%",
     zIndex: -2222,
   },
   card: {
-    width: "90%",
+    width: vw(90),
     backgroundColor: "#fff",
-    padding: 20,
-    height: 246,
-    borderRadius: 20,
+    padding: rem(20),
+    height: vh(30),
+    borderRadius: rem(20),
     // Shadow for iOS
-    borderBottomWidth: 63,
+    borderBottomWidth: rem(63),
     borderColor: "#2364AA",
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOpacity: rem(0.25),
+    shadowRadius: rem(3.84),
+    elevation: rem(5),
     position: "absolute",
-    top: 185,
+    top: rem(185),
     alignSelf: "center",
     justifyContent: "space-between",
   },
   predictText: {
-    fontSize: 12,
+    fontSize: rem(12),
     color: "#3B3B3B",
     textAlign: "center",
     fontFamily: " SpaceGroteskRegular",
-    lineHeight: 22,
+    lineHeight: rem(22),
   },
   cardText1: {
-    fontSize: 20,
+    fontSize: rem(20),
     color: "#17478B",
     textAlign: "center",
     fontFamily: "DMSansSemiBold",
-    lineHeight: 24,
+    lineHeight: rem(24),
   },
   cardTextGrandPrice: {
-    fontSize: 48,
+    fontSize:  rem(48),
     color: "#17478B",
     textAlign: "center",
     fontFamily: "DMSansSemiBold",
+  },
+  grandContainer:{
+    flexDirection:"column",
+    justifyContent:"center",
+    height: vh(10)
   },
   gamersSection: {
     flex: 1,
     width: "100%",
-    paddingHorizontal: 17,
-    marginTop: "40%",
+    paddingHorizontal: rem(17),
+    marginTop:Platform.OS === "android" ?  vh(12) : vh(20),
   },
   sectionTitle: {
-    fontSize: 16,
-    marginBottom: 10,
-    lineHeight: 24,
+    fontSize: rem(16),
+    marginBottom: rem(10),
+    lineHeight: rem(24),
     fontFamily: "SpaceGroteskSemiBold",
     color: "#3B3B3B",
-    marginLeft: 10,
+    marginLeft: rem(10),
   },
 
   actionRow: {
-    top: "18%",
+    top: Platform.OS === "android" ? vh(6) : vh(8),
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
   },
   joinButton: {
-    borderRadius: 20,
+    borderRadius: rem(20),
     backgroundColor: "#FFFFFF",
-    padding: 5,
-    width: 93,
-    height: 28,
+    padding: rem(5),
+    width: rem(93),
+    height: rem(28),
     justifyContent: "center",
   },
   joinButtonText: {
@@ -200,7 +196,7 @@ const styles = StyleSheet.create({
   entryFeeText: {
     fontFamily: "SpaceGroteskSemiBold",
     color: "#ffffff",
-    fontSize: 14,
+    fontSize: rem(14),
     lineHeight: 22,
   },
   entryFeeAmountContainer: {
@@ -210,7 +206,7 @@ const styles = StyleSheet.create({
   currencyText: {
     fontFamily: "SpaceGroteskLight",
     color: "#ffffff",
-    fontSize: 12,
+    fontSize: rem(12),
     lineHeight: 22,
   },
   amountText: {
@@ -224,9 +220,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: "90%",
     alignSelf: "center",
-    height: 140,
+    height: rem(140),
     flex: 1,
-    marginTop: 23,
+    marginTop: rem(23),
   },
   referTextHeader: {
     fontFamily: "SpaceGroteskSemiBold",
@@ -240,8 +236,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 18,
     width: "80%",
-    marginTop: 5,
-    paddingRight: 12,
+    marginTop: rem(5),
+    paddingRight: rem(12),
   },
   referButtonText: {
     fontFamily: "SpaceGroteskLight",
@@ -255,21 +251,22 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: "#F2F2F2",
     borderWidth: 1,
-    width: 91,
-    height: 30,
-    marginTop: 10,
+    width: rem(91),
+    height: rem(30),
+    marginTop: rem(10),
   },
   referImage: {
     position: "absolute",
     alignSelf: "center",
     zIndex: 2222,
     right: 0,
-    top: 35,
-    width: 116.2,
-    height: 106,
+    top: rem(35),
+    width: rem(116.2),
+    height: rem(106),
   },
   referContainer: {
     position: "relative",
+    marginBottom:vh(15)
   },
   tipsCont: {
     flexDirection: "row",
@@ -277,8 +274,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   tips: {
-    height: 18,
-    width: 18,
+    height: rem(18),
+    width: rem(18),
     borderRadius: 30,
     backgroundColor: "#51A2E0",
     alignSelf: "center",

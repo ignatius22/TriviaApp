@@ -1,3 +1,4 @@
+import { rem } from "@/constants/helper";
 import { gamersData } from "@/gameData";
 import { Image, StyleSheet, Text, View } from "react-native";
 
@@ -46,17 +47,17 @@ const styles = StyleSheet.create({
   gamerItem: {
     flexDirection: "column",
     alignItems: "center",
-    marginRight: 15,
+    marginRight: rem(15),
     justifyContent: "center",
   },
   avatarContainer: {
-    width: 60,
-    height: 60,
+    width: rem(60),
+    height: rem(60),
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 35,
     borderWidth: 5,
     borderColor: "#fff",
-    marginRight: 10,
+    marginRight: rem(10),
   },
 });

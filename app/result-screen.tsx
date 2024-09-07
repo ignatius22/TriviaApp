@@ -1,5 +1,6 @@
 import { Sad } from "@/components/Sad";
 import { Smile } from "@/components/Smile";
+import { rem, vh, vw } from "@/constants/helper";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
@@ -13,6 +14,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 
 type ResultScreenRouteProp = RouteProp<{
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
   },
   reactionBox: {
     width: "100%",
-    height: 256,
+    height: vh(37),
     borderColor: "#00CBF7",
     borderWidth: 4,
     borderRadius: 10,
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
   },
   resultBox: {
     width: "100%",
-    height: 76,
+    height: vh(13),
     borderColor: "#00CBF7",
     borderWidth: 4,
     borderRadius: 10,
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#FFFFFF",
     fontFamily: "DMSans_18ptBold",
-    lineHeight: 44,
+    lineHeight: rem(44),
     textAlign: "center",
   },
   statistic: {
@@ -160,8 +162,8 @@ const styles = StyleSheet.create({
   },
   bar: {
     borderColor: "#5A5A5A",
-    borderWidth: 0.3,
-    height: 30,
+    borderWidth: 0.5,
+    height: vh(4),
   },
   grade: {
     flexDirection: "row",
@@ -199,10 +201,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#00CBF7",
-    height: 66,
-    borderRadius: 100,
-    marginHorizontal: 15,
-    marginBottom: 40,
+    height: Platform.OS === "ios" ? vh(8) : vh(10),
+    borderRadius: rem(100),
+    marginHorizontal: Platform.OS === "ios" ? vw(7) : vw(8),
+    marginBottom:Platform.OS === "ios" ?  vh(4.8) : vh(7),
     justifyContent: "center",
   },
   resultBtn: {

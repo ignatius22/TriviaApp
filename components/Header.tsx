@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { HelloWave } from "./HelloWave";
+import { rem, vw } from "@/constants/helper";
 
 const Header: React.FC = () => {
   return (
@@ -18,12 +19,12 @@ const Header: React.FC = () => {
       resizeMode="cover"
     >
       <View style={styles.profileSection}>
-        <View style={{ flexDirection: "column", gap: 15 }}>
+        <View style={{ flexDirection: "column", gap: rem(15) }}>
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              width: "100%",
+              width: vw(90),
             }}
           >
             <Image
@@ -48,7 +49,7 @@ const Header: React.FC = () => {
               <TouchableOpacity activeOpacity={0.3}>
                 <Image
                   source={require("@/assets/images/notification.png")}
-                  style={{ marginLeft: 10 }}
+                  // style={{ marginLeft:10}}
                 />
               </TouchableOpacity>
             </View>
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
   },
   eraser: {
     borderRadius: 20,
-    width: 47,
+    width: rem(47),
     height: 28,
     justifyContent: "space-between",
     borderWidth: 1.4,
